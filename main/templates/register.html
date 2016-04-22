@@ -1,0 +1,59 @@
+
+{% include "header.html" %}
+
+
+{% if form.subject.errors %}
+    <ol>
+    {% for error in form.subject.errors %}
+        <li><strong>{{ error|escape }}</strong></li>
+    {% endfor %}
+    </ol>
+{% endif %}
+
+
+
+
+<form class="ui form" action="/register/" method="post">
+    {% csrf_token %}
+ 
+
+
+	  <div class="field">
+	    <label for="username">Username</label>
+	    <input type="text" name="username">
+	  </div>
+
+     <div class="field">
+	    <label for="password1">Password</label>
+	    <input type="text" name="password1">
+ 	 </div>
+
+     <div class="field">
+	    <label for="password2">Repeat Password</label>
+	    <input type="text" name="password1">
+ 	 </div>
+
+	 <div class="field">
+		    <label>Name</label>
+		    <div class="two fields">
+		      <div class="field">
+		        <input type="text" name="firstname" placeholder="First Name">
+		      </div>
+		      <div class="field">
+		        <input type="text" name="lastname" placeholder="Last Name">
+		      </div>
+		    </div>
+  	</div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input type="text" name="email" placeholder="Email">
+  </div>
+
+
+
+  <input class="ui button" type="submit"></input>
+</form>
+
+
+{% include "footer.html" %}
