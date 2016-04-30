@@ -2,12 +2,17 @@
 {% include "header.html" %}
 
 
-{% if form.subject.errors %}
-    <ol>
-    {% for error in form.subject.errors %}
-        <li><strong>{{ error|escape }}</strong></li>
+{% if form.errors %}
+        {% for error in form.errors %}
+            <div class="alert alert-error">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-error">
+            <strong>{{ error|escape }}</strong>
+        </div>
     {% endfor %}
-    </ol>
 {% endif %}
 
 
@@ -17,20 +22,19 @@
     {% csrf_token %}
  
 
-
 	  <div class="field">
 	    <label for="username">Username</label>
 	    <input type="text" name="username">
 	  </div>
 
      <div class="field">
-	    <label for="password1">Password</label>
-	    <input type="text" name="password1">
+	    <label for="password">Password</label>
+	    <input type="password" name="password">
  	 </div>
 
      <div class="field">
 	    <label for="password2">Repeat Password</label>
-	    <input type="text" name="password1">
+	    <input type="password" name="password2">
  	 </div>
 
 	 <div class="field">
@@ -46,14 +50,50 @@
   	</div>
 
   <div class="field">
-    <label for="email">Email</label>
+    <label for="email">Email address</label>
     <input type="text" name="email" placeholder="Email">
   </div>
 
+  <div class="ui floating dropdown labeled search icon button">
+      <i class="world icon"></i>
+      <span class="text">Select Timezone</span>
+      <div class="menu">
+          {% for zone in timezones %}
+                <div class="item"> {{ zone }} </div>
+          {% endfor %}
+      </div>
+    </div>
 
+
+<div class="ui compact menu">
+  <div class="ui simple dropdown item">
+    The best time for emails:
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        {% for choice in time_choices %}
+      <div class="item"> {{ choice }}</div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="ui compact menu">
+  <div class="ui simple dropdown item">
+    End of week:
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item"> Saturday night </div>
+      <div class="item"> Sunday night </div>
+      <div class="item"> Monday morning </div>
+    </div>
+  </div>
+</div>
 
   <input class="ui button" type="submit"></input>
 </form>
 
+<script>
+$('.ui.dropdown').dropdown();
+</script>
 
 {% include "footer.html" %}

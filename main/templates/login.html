@@ -1,12 +1,11 @@
-{% extends "header.html" %}
-
-{% block content %}
+{% include "header.html" %}
 
   {% if form.errors %}
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}
 
-  <form action="login" method="post">
+  <form class="ui form" action="/login/" method="post">
+   {% csrf_token %}
     <label for="username">User name:</label>
     <input type="text" name="username" value="" id="username">
     <label for="password">Password:</label>
@@ -16,4 +15,4 @@
     <input type="hidden" name="next" value="{{ next|escape }}" />
   </form>
 
-{% endblock %}
+{% include "footer.html" %}
