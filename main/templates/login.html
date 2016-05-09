@@ -4,6 +4,9 @@
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}
 
+<div class="ui raised very padded text container segment">
+ <h2 class="ui header">Login to your account</h2>
+
   <form class="ui form" action="/login/" method="post">
    {% csrf_token %}
     <label for="username">User name:</label>
@@ -14,5 +17,6 @@
     <input type="submit" value="login" />
     <input type="hidden" name="next" value="{{ next|escape }}" />
   </form>
+  </div>
 
 {% include "footer.html" %}
