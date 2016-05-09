@@ -5,6 +5,7 @@ from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from models import *
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 import pytz
 
 # Create your views here.
@@ -46,7 +47,7 @@ def register(request):
         context["form"] = form
         context["timezones"] = pytz.all_timezones
         context["time_choices"] = ["test1", "test2"]
-        print context
+
  
     return render(request, 'register.html', context)
 
