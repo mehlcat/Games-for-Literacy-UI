@@ -1,10 +1,31 @@
 {% include "header.html" %}
 
+<!-- Home screen for logged out users -->
 
-<h1 class="ui header">Hello World</h1>
 
 
-{{ users }} 
+  <div class = "ui three column grid">
+    <div class= "two wide column">
+    </div>
+     <div class= "twelve wide center aligned column">
+				<h1 class="ui icon header">
+				 <img class="ui medium image" src="/static/icons/Landing_Page_graphic.png">
+				  <div class="content">
+				    Literacy Games 
+				    <div class="sub header"> Games for Literacy is a suite of web and mobile apps designed with the objective to engage users to build reading skills through activities that clinically-proven to show results </div>
+				  </div>
+				</h1>
+
+			<div class="ui vertical buttons">
+			  <a href="/register/" class="ui violet large button">Register </a>
+			  <a href="/login/" class="ui white large basic button"> Returning User </a>
+			</div>
+
+ 	</div>
+    <div class= "two wide column">
+    </div>
+ </div>
+
 
 
 {% include "footer.html" %}
